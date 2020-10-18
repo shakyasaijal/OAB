@@ -14,7 +14,7 @@ class AbstractTimeStampModel(models.Model):
 
 class Category(AbstractTimeStampModel):
     name = models.CharField(max_length=255, null=False, blank=False, unique=True)
-    image = models.ImageField(null=True, blank=True, upload_to='/categories/')
+    image = models.ImageField(null=True, blank=True, upload_to='categories')
 
     def __str__(self):
         return self.name
@@ -30,7 +30,7 @@ class Ingredients(AbstractTimeStampModel):
 class Products(AbstractTimeStampModel):
     name = models.CharField(max_length=255, null=False, blank=False, unique=True)
     price = models.FloatField(null=False, blank=False)
-    image = models.ImageField(upload_to='/products', null=True, blank=True)
+    image = models.ImageField(upload_to='products', null=True, blank=True)
     
     category = models.ManyToManyField(Category, blank=True)
     ingredients = models.ManyToManyField(Ingredients, blank=True)
