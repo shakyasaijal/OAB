@@ -18,11 +18,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-OWN_APPS = [
-    'products'
+THIRD_PARTY_APPS = [
+    'graphene_django'
 ]
 
-INSTALLED_APPS += OWN_APPS
+OWN_APPS = [
+    'products',
+    'graph'
+]
+
+INSTALLED_APPS += OWN_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -87,3 +92,7 @@ STATICFILES_DIRS = [BASE_DIR+"/assets", ]
 STATIC_ROOT = BASE_DIR+'/static'
 MEDIA_ROOT = BASE_DIR+'/media'
 MEDIA_URL = '/media/'
+
+GRAPHENE = {
+    "SCHEMA": "graph.schema.schema"
+}

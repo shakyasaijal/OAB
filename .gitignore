@@ -8,3 +8,4 @@ config.yaml
 credentials.yaml
 credentials.yml
 media
+*.sqlite3
