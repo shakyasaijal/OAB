@@ -15,9 +15,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-if not DEBUG:
-    import django_heroku
-    django_heroku.settings(locals())
 
 THIRD_PARTY_APPS = [
     'graphene_django'
@@ -106,6 +103,10 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+import django_heroku
+django_heroku.settings(locals())
+
 
 GRAPHENE = {
     "SCHEMA": "graph.schema.schema"
