@@ -18,12 +18,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
+
 THIRD_PARTY_APPS = [
     'graphene_django'
 ]
 
 OWN_APPS = [
     'products',
+    'Employee',
+    'Order',
+    'Stocks',
     'graph'
 ]
 
@@ -38,6 +45,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if not DEBUG:
+    MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware',]
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 ROOT_URLCONF = 'orderAndBilling.urls'
 
@@ -88,11 +100,22 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR+"/assets", ]
-STATIC_ROOT = BASE_DIR+'/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = BASE_DIR+'/media'
 MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 GRAPHENE = {
     "SCHEMA": "graph.schema.schema"
 }
+
+# OPTIONS
+# COMPANY_TYPE
+#   - cafeteria
+#   - medicine
+#   - grocery
+#   - tailor
+COMPANY_TYPE='cafeteria'
