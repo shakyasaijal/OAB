@@ -1,11 +1,8 @@
 import os
-import yaml
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-credentials = yaml.load(open('credentials.yaml'), Loader=yaml.FullLoader)
 
-
-SECRET_KEY = credentials['SECRET_KEY']
+SECRET_KEY = '*df!!5+j44boqd+y%8v4^&b159^pg1t!oyp0flg9!b=bkal707'
 DEBUG = True
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1','order-and-billing.herokuapp.com']
 

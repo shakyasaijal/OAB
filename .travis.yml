@@ -5,9 +5,7 @@ python:
 
 install:
     - pip install -r requirements.txt
-    - cd ..
 
 script:
-    - cp credentials.yaml.example credentials.yaml
     - python manage.py test
     
