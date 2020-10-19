@@ -7,7 +7,7 @@ credentials = yaml.load(open('credentials.yaml'), Loader=yaml.FullLoader)
 
 SECRET_KEY = credentials['SECRET_KEY']
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1','order-and-billing.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',

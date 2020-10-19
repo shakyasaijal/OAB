@@ -1,1 +1,1 @@
-web: gunicorn orderAndBilling.wsgi
+web: gunicorn orderAndBilling.wsgi --log-file -
